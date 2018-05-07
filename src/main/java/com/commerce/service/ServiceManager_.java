@@ -7,9 +7,13 @@ import java.util.List;
 
 class ServiceManager_<T> implements IServiceManager_<T> {
 
-    protected static Class tClass;
+    private Class tClass;
+    private Dao<T> dao;
 
-    private Dao<T> dao = new Dao<>(tClass);
+    public ServiceManager_(Class tClass) {
+        this.tClass = tClass;
+        dao = new Dao<>(tClass);
+    }
 
     @Override
     public T get(Integer id) {

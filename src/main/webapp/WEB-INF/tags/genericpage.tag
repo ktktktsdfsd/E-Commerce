@@ -1,26 +1,23 @@
-<%@ tag import="java.util.List" %>
-<%@ tag import="com.commerce.entities.Category" %>
 <%@ tag import="com.commerce.service.CategoryManager" %>
 <%@ tag description="Overall Page template" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ attribute name="header" fragment="true" %>
 <%@ attribute name="footer" fragment="true" %>
+<%@ attribute name="title" required="true" rtexprvalue="true" %>
+<%request.setAttribute("categoryList", new CategoryManager().getList());%>
+
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>${title}</title>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/electro/css/bootstrap.min.css"/>"/>
     <link rel="stylesheet" href="<c:url value="/resources/electro/css/font-awesome.min.css"/>">
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/electro/css/style.css"/>"/>
 </head>
 <body>
+
 <div id="pageheader">
     <jsp:invoke fragment="header"/>
-
-    <%
-        List<Category> categories = new CategoryManager().getList();
-        request.setAttribute("categoryList", categories);
-    %>
-
 
     <!-- HEADER -->
     <header>
@@ -64,12 +61,12 @@
                         <div class="header-search">
                             <form>
                                 <select class="input-select">
+
                                     <!-- TODO Veritabanından çekildi -->
                                     <%-- FIXME Tıklama olayını düzenle --%>
                                     <option value="0">Kategoriler</option>
                                     <c:forEach var="item" items="${categoryList}">
-                                        <option value="0"><c:out value="${item.name}"/></option>
-                                        />
+                                        <option value="1">${item.name}</option>
                                     </c:forEach>
 
                                 </select>
@@ -91,16 +88,15 @@
 
                                     <!-- FIXME Ürün adeti dinamik olarak güncellenecek -->
                                     <div class="qty">3</div>
+
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list">
 
-
                                         <!-- FIXME Her ürün için for döngüsü -->
                                         <div class="product-widget">
                                             <div class="product-img">
-                                                <img src="<c:url value="/resources/electro/img/product01.png"/>"
-                                                     alt="">
+                                                <img src="<c:url value="/resources/electro/img/product01.png"/>">
                                             </div>
                                             <div class="product-body">
                                                 <h3 class="product-name"><a href="#">product name goes here</a></h3>
@@ -206,8 +202,10 @@
 
                                 <!-- FIXME Linkleri düzenle -->
                                 <c:forEach var="item" items="${categoryList}">
-                                    <li><a href="#"><c:out value="${item.name}"/></a></li>
+                                    <li><a href="#">${item.name}</a></li>
                                 </c:forEach>
+
+
                             </ul>
                         </div>
                     </div>

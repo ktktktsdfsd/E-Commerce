@@ -4,8 +4,7 @@ import com.commerce.entities.Product;
 
 public class ProductManager extends ServiceManager_<Product> {
 
-    static {
-        tClass = Product.class;
+    public ProductManager() {
+        super(Product.class);
     }
-
 }

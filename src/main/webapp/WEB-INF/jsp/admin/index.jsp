@@ -41,12 +41,11 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right">
-                <a class="nav-link" href="javascript:{ return false; }" onclick="loadPage('#')">
+                <a class="nav-link" href="javascript:{ return false; }" onclick="loadPage('admin/orders')">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Siparişler</span>
                 </a>
             </li>
-
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -56,8 +55,6 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-
-
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -68,15 +65,14 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <div id="tableload" class="jumbotron" style="background: transparent">
-            <%-- TODO Table --%>
+            <%-- Table Context--%>
         </div>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
-        <div class="container">
-        </div>
-    </footer>
+    <%--<footer class="sticky-footer">--%>
+        <%--<div class="container"></div>--%>
+    <%--</footer>--%>
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -99,13 +95,13 @@
 </div>
 
 <script>
-
     function loadPage(url) {
-        $('#tableload').load(url)
+        $('#tableload').load(url, function (responseTxt, statusTxt, xhr) {
+            if (statusTxt == "error")
+                alert("Hata! Sayfa yüklenemedi :\n" + xhr.status + ": " + xhr.statusText);
+        });
     }
-
 </script>
-
 
 <script src="<c:url value="/resources/admin/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>

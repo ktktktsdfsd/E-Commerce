@@ -4,8 +4,7 @@ import com.commerce.entities.Category;
 
 public class CategoryManager extends ServiceManager_<Category> {
 
-    static {
-        tClass = Category.class;
+    public CategoryManager() {
+        super(Category.class);
     }
-
 }

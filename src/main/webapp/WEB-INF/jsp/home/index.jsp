@@ -3,15 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:genericpage>
-    <jsp:attribute name="header">
-    </jsp:attribute>
-    <jsp:attribute name="footer">
-    </jsp:attribute>
+    <jsp:attribute name="header"></jsp:attribute>
+    <jsp:attribute name="footer"></jsp:attribute>
+    <jsp:attribute name="title">Ana Sayfa</jsp:attribute>
 
     <jsp:body>
 
 
-        <%-- FIXME Sectionlar dinamik olarak ayarlanacak --%>
+        <%-- FIXME Shop'lar dinamik olarak ayarlanacak --%>
 
         <!-- SECTION -->
         <div class="section">

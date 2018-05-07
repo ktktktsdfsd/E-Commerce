@@ -1,6 +1,5 @@
 package com.commerce.controller;
 
-import com.commerce.entities.Member;
 import com.commerce.service.CategoryManager;
 import com.commerce.service.MemberManager;
 import com.commerce.service.OrderManager;
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 @Controller
 public class AdminController {
@@ -43,6 +41,12 @@ public class AdminController {
     public String products(HttpServletResponse response, HttpServletRequest request) {
         request.setAttribute("products", productManager.getList());
         return "admin/products";
+    }
+
+    @RequestMapping("admin/orders")
+    public String orders(HttpServletRequest request) {
+        request.setAttribute("orders", orderManager.getList());
+        return "admin/orders";
     }
 
 }
