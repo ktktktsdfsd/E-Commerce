@@ -33,6 +33,20 @@ public class Order {
     @JoinTable(name = "product_orderCount", joinColumns = @JoinColumn(name = "productCountId"))
     private List<Product_Count> product_counts = new ArrayList<>();
 
+    public Order() {
+    }
+
+    public Order(double sumPrice, Date date) {
+        this.sumPrice = sumPrice;
+        this.date = date;
+    }
+
+    public Order(double sumPrice, Date date, boolean isDeliver) {
+        this.sumPrice = sumPrice;
+        this.date = date;
+        this.isDeliver = isDeliver;
+    }
+
     public int getId() {
         return id;
     }

@@ -50,7 +50,7 @@
                             </c:choose>
                             <span>
                                 <a href="#" class="btn btn-danger">Sil</a>
-                                <a href="#" class="btn btn-primary">Ayrıntılar</a>
+                                <a href="admin/member/details?id=${item.id}" class="btn btn-primary">Ayrıntılar</a>
                             </span>
                         </td>
                     </tr>

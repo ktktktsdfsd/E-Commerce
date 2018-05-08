@@ -23,16 +23,32 @@ public class Product {
 
     private String description;
 
+    @Column(nullable = false)
     private double price;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    @ElementCollection
-    @CollectionTable(name = "photo_paths", joinColumns = @JoinColumn(name = "productId"))
     @Column(name = "path")
-    private List<String> photoPaths = new ArrayList<>();
+    private String photoPath;
+
+    public Product() {
+    }
+
+    public Product(String name, String title, double price) {
+        this.name = name;
+        this.title = title;
+        this.price = price;
+    }
+
+    public Product(String name, String title, String description, double price, Category category) {
+        this.name = name;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+    }
 
     public int getId() {
         return id;
@@ -78,11 +94,11 @@ public class Product {
         this.category = category;
     }
 
-    public List<String> getPhotoPaths() {
-        return photoPaths;
+    public String getPhotoPath() {
+        return photoPath;
     }
 
-    public void setPhotoPaths(List<String> photoPaths) {
-        this.photoPaths = photoPaths;
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 }

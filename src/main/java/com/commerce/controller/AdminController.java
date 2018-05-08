@@ -1,12 +1,16 @@
 package com.commerce.controller;
 
+import com.commerce.entities.Member;
 import com.commerce.service.CategoryManager;
 import com.commerce.service.MemberManager;
 import com.commerce.service.OrderManager;
 import com.commerce.service.ProductManager;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +25,6 @@ public class AdminController {
 
     @RequestMapping("admin")
     public String index() {
-
         return "admin/index";
     }
 
@@ -38,7 +41,7 @@ public class AdminController {
     }
 
     @RequestMapping("admin/products")
-    public String products(HttpServletResponse response, HttpServletRequest request) {
+    public String products(HttpServletRequest request) {
         request.setAttribute("products", productManager.getList());
         return "admin/products";
     }

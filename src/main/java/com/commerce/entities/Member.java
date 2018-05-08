@@ -36,6 +36,27 @@ public class Member {
 
     private boolean isActive = false;
 
+    public Member() {
+    }
+
+    public Member(String name, String surname, String mail, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.mail = mail;
+        this.password = password;
+    }
+
+    public Member(String name, String surname, String mail, String password, String adress,
+                  boolean isAdmin, boolean isActive) {
+        this.name = name;
+        this.surname = surname;
+        this.mail = mail;
+        this.password = password;
+        this.adress = adress;
+        this.isAdmin = isAdmin;
+        this.isActive = isActive;
+    }
+
     public int getId() {
         return id;
     }

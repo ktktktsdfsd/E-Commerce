@@ -1,8 +1,6 @@
 package com.commerce.test;
 
-import com.commerce.entities.Category;
-import com.commerce.entities.Member;
-import com.commerce.entities.Product;
+import com.commerce.entities.*;
 import com.commerce.service.CategoryManager;
 import com.commerce.service.MemberManager;
 import com.commerce.service.OrderManager;
@@ -56,34 +54,30 @@ public class TestInitialize {
             product.setPrice(Double.parseDouble(faker.commerce().price().replace(',', '.')));
             product.setTitle(faker.commerce().productName());
             product.setCategory(categoryList.get(faker.number().numberBetween(0, categoryList.size() - 1)));
-
-            List<String> photoPathList = new ArrayList<>();
-            for (int k = 0; k < faker.number().numberBetween(2, 5); k++)
-                photoPathList.add(faker.internet().image());
-            product.setPhotoPaths(photoPathList);
+            product.setPhotoPath(faker.internet().image());
 
             productManager.insert(product);
         }
-//        // TODO Sipariş Ekleme
-//        List<Product> productList = productManager.getList();
-//        List<Member> memberList = memberManager.getList();
-//        for (int i = 0; i < 30; i++) {
-//            Order order = new Order();
-//            order.setDate(faker.date().birthday());
-//            order.setMember(memberList.get(faker.number().numberBetween(0, memberList.size() - 1)));
-//
-//            double sumPrice = 0;
-//            for (int k = 0; k < faker.number().numberBetween(2, 4); k++) {
-//                Product_Count product_count = new Product_Count();
-//                int randomIndex = (i + k) % productList.size();
-//                product_count.setProductId(randomIndex);
-//                product_count.setOrderCount(faker.number().numberBetween(1, 3));
-//                sumPrice += productList.get(randomIndex).getPrice() * product_count.getOrderCount();
-//                order.getProduct_counts().add(product_count);
-//            }
-//            order.setSumPrice(sumPrice);
-//
-//            orderManager.insert(order);
-//        }
+        // TODO Sipariş Ekleme
+        List<Product> productList = productManager.getList();
+        List<Member> memberList = memberManager.getList();
+        for (int i = 0; i < 30; i++) {
+            Order order = new Order();
+            order.setDate(faker.date().birthday());
+            order.setMember(memberList.get(faker.number().numberBetween(0, memberList.size() - 1)));
+
+            double sumPrice = 0;
+            for (int k = 0; k < faker.number().numberBetween(2, 4); k++) {
+                Product_Count product_count = new Product_Count();
+                int randomIndex = (i + k) % productList.size();
+                product_count.setProductId(randomIndex);
+                product_count.setOrderCount(faker.number().numberBetween(1, 3));
+                sumPrice += productList.get(randomIndex).getPrice() * product_count.getOrderCount();
+                order.getProduct_counts().add(product_count);
+            }
+            order.setSumPrice(sumPrice);
+
+            orderManager.insert(order);
+        }
     }
 }
