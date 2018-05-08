@@ -33,7 +33,7 @@ public class Order {
     @JoinTable(name = "product_orderCount", joinColumns = @JoinColumn(name = "productCountId"))
     private List<Product_Count> product_counts = new ArrayList<>();
 
-    public Order() {
+    public Order(){
     }
 
     public Order(double sumPrice, Date date) {

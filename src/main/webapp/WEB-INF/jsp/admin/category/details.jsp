@@ -27,28 +27,18 @@
 	<div class="section">
 		<!-- container -->
 		<div class="container">
-			<!-- row -->
-			<!-- Product thumb imgs -->
-			<div class="col-md-2  col-md-pull-5">
-				<div id="product-imgs">
-					<div class="product-preview">
-						<img src="<c:url value="/resources/electro/img/product01.png"/>">
-					</div>
-				</div>
-			</div>
-			<!-- /Product thumb imgs -->
+		 
 			<!-- Product details -->
 			<div class="col-md-5">
 				<div class="product-details">
-					<h2 class="product-name">${product.name}</h2>
-					<h4 class="product-name">${product.category.name}</h4>
-					<div>
-						<h3 class="product-price">${product.price}</h3>
-					</div>
-					<p>${product.description}</p>
+					<h2 class="product-name">Kategori Adı</h2>
+					 
+					 <input class="form-control" type="text" value="${category.name}">
+					<input type="submit" class="btn btn-primary" value="Güncelle">
 				</div>
 			</div>
 			<!-- /Product details -->
+
 			<!-- Product tab -->
 			<hr>
 			<!-- /product tab -->
@@ -56,11 +46,12 @@
 		<!-- /row -->
 	</div>
 	<!-- /container -->
-	</div>
-	<!-- /SECTION -->
+ 
 
-	<script	src="<c:url value="/resources/admin/vendor/jquery/jquery.min.js"/>"></script>
-	<script src="<c:url value="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/admin/vendor/jquery/jquery.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 	<script
 		src="<c:url value="/resources/admin/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
 	<script

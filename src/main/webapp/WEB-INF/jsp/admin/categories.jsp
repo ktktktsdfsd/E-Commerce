@@ -24,26 +24,23 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
                 <thead>
                 <tr>
                     <th>Kategori Adı</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 <c:forEach var="item" items="${categories}">
                     <tr>
                         <td class="d-flex justify-content-between align-items-center">${item.name}
                             <span>
                                 <a href="#" class="btn btn-danger">Sil</a>
-                                <a href="#" class="btn btn-primary">Düzenle</a>
+                                <a href="admin/category/details?id=${item.id}" class="btn btn-primary">Düzenle</a>
                             </span>
                         </td>
                     </tr>
                 </c:forEach>
                 </tbody>
-
             </table>
         </div>
     </div>

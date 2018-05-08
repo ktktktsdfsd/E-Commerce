@@ -3,8 +3,8 @@ package com.commerce.entities;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Product_Count {
-
+public class Product_Count
+{
     private int productId;
 
     private int orderCount;

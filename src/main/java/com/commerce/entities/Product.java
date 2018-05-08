@@ -3,8 +3,7 @@ package com.commerce.entities;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+ 
 
 @Entity
 @Table(name = "tbl_product")
