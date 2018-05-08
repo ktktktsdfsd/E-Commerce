@@ -21,47 +21,13 @@
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
-				<div class="row">
-					<!-- Resimler Burada olacak  -->
-					<div class="col-md-5 col-md-push-2">
-						<div id="product-main-img">
-							<div class="product-preview">
-									<img src= <c:url value="/resources/electro/img/product01.png"/>">
-							</div>
-
-							<div class="product-preview">
-								<img src= <c:url value="/resources/electro/img/product03.png"/>">
-							</div>
-
-							<div class="product-preview">
-								<img src= <c:url value="/resources/electro/img/product06.png"/>">
-							</div>
-
-							<div class="product-preview">
-								<img src= <c:url value="/resources/electro/img/product08.png"/>">
-							</div>
-						</div>
-					</div>
-					<!-- /Product main img -->
-
-					<!-- Product thumb imgs -->
+		        	<!-- Product thumb imgs -->
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">"
 								<img src= <c:url value="/resources/electro/img/product01.png"/>">
 							</div>
 
-							<div class="product-preview">
-									<img src= <c:url value="/resources/electro/img/product03.png"/>">
-							</div>
-
-							<div class="product-preview">
-									<img src= <c:url value="/resources/electro/img/product06.png"/>">
-							</div>
-
-							<div class="product-preview">
-									<img src= <c:url value="/resources/electro/img/product08.png"/>">
-							</div>
 						</div>
 					</div>
 					<!-- /Product thumb imgs -->
@@ -69,15 +35,14 @@
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">product name goes here</h2>
-							 
+							<h2 class="product-name">${product.name}</h2>
+							<h4 class="product-name">${product.category.name}</h4>
 							<div>
-								<h3 class="product-price"> 980.00 ₺ </h3>
+								<h3 class="product-price"> ${product.price}</h3>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>${product.description}</p>
 							<div class="add-to-cart">
 							 
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Sepete Ekle</button>
 							</div>
 						</div>
 					</div>

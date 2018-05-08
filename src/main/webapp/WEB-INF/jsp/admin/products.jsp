@@ -42,7 +42,7 @@
                         <td class="d-flex justify-content-between align-items-center">${item.category.name}
                             <span>
                                 <a href="#" class="btn btn-danger">Sil</a>
-                                <a href="#" class="btn btn-primary">Ayrıntılar</a>
+                                <a href="admin/product/details?id=${item.id}" class="btn btn-primary">Ayrıntılar</a>
                             </span>
                         </td>
                     </tr>
