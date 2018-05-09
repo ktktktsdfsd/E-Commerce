@@ -130,6 +130,14 @@
     </div>
 </div>
 
+<script src="<c:url value="/resources/admin/vendor/jquery/jquery.min.js"/>"></script>
+<script src="<c:url value="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+<script src="<c:url value="/resources/admin/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
+<script src="<c:url value="/resources/admin/vendor/datatables/jquery.dataTables.js"/>"></script>
+<script src="<c:url value="/resources/admin/vendor/datatables/dataTables.bootstrap4.js"/>"></script>
+<script src="<c:url value="/resources/admin/js/sb-admin.min.js"/>"></script>
+<script src="<c:url value="/resources/admin/js/sb-admin-datatables.min.js"/>"></script>
+
 <script>
     function ajaxpost() {
 
@@ -154,15 +162,6 @@
     }
 
 </script>
-
-
-<script src="<c:url value="/resources/admin/vendor/jquery/jquery.min.js"/>"></script>
-<script src="<c:url value="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
-<script src="<c:url value="/resources/admin/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
-<script src="<c:url value="/resources/admin/vendor/datatables/jquery.dataTables.js"/>"></script>
-<script src="<c:url value="/resources/admin/vendor/datatables/dataTables.bootstrap4.js"/>"></script>
-<script src="<c:url value="/resources/admin/js/sb-admin.min.js"/>"></script>
-<script src="<c:url value="/resources/admin/js/sb-admin-datatables.min.js"/>"></script>
 </body>
 
 </html>

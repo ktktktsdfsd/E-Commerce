@@ -33,9 +33,11 @@ public class Member implements Serializable {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
 
-    private boolean isAdmin = false;
+    private boolean isAdmin;
 
-    private boolean isActive = false;
+    private boolean isActive;
+
+    private boolean isRemoved;
 
     public Member() {
     }
@@ -116,5 +118,13 @@ public class Member implements Serializable {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public boolean isRemoved() {
+        return isRemoved;
+    }
+
+    public void setRemoved(boolean removed) {
+        isRemoved = removed;
     }
 }

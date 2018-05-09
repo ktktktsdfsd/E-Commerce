@@ -33,7 +33,7 @@
 
                     <!-- FIXME Dinamik olarak güncellenecek -->
 
-                    <li><a href="#"><i class="fa fa-user-o"></i> Giriş Yap</a></li>
+                    <li><a href="/login"><i class="fa fa-user-o"></i> Giriş Yap</a></li>
                     <li><a href="#"><i class="fa fa-user-plus"></i> Üye Ol</a></li>
                 </ul>
             </div>

@@ -31,5 +31,13 @@ public class MemberController {
         memberManager.update(member);
     }
 
+    @RequestMapping(value = "deleteMember", method = RequestMethod.POST)
+    @ResponseBody
+    void ajaxpostdelete(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Member member = memberManager.get(id);
+        member.setRemoved(true);
+        memberManager.update(member);
+    }
 
 }

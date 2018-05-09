@@ -38,24 +38,26 @@
 
                 <tbody>
                 <c:forEach var="item" items="${members}">
-                    <tr>
-                        <td>${item.name}</td>
-                        <td>${item.surname}</td>
-                        <td>${item.mail}</td>
-                        <td class="d-flex justify-content-between align-items-center">
-                            <c:choose>
-                                <c:when test="${item.active==true}"><input type="checkbox" disabled checked></c:when>
-                                <c:otherwise><input type="checkbox" disabled></c:otherwise>
-                            </c:choose>
-                            <span>
+                    <c:if test="${item.removed==false}">
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.surname}</td>
+                            <td>${item.mail}</td>
+                            <td class="d-flex justify-content-between align-items-center">
+                                <c:choose>
+                                    <c:when test="${item.active==true}"><input type="checkbox" disabled
+                                                                               checked></c:when>
+                                    <c:otherwise><input type="checkbox" disabled></c:otherwise>
+                                </c:choose>
+                                <span>
                                 <a href="#" class="btn btn-danger">Sil</a>
                                 <a href="admin/member/details?id=${item.id}" class="btn btn-primary">Ayrıntılar</a>
                             </span>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
                 </tbody>
-
             </table>
         </div>
     </div>
@@ -69,6 +71,26 @@
 <script src="<c:url value="/resources/admin/js/sb-admin.min.js"/>"></script>
 <script src="<c:url value="/resources/admin/js/sb-admin-datatables.min.js"/>"></script>
 
-</body>
+<script>
+    function ajaxpost(id) {
 
+        var r = confirm("Silmek istediğinize emin misiniz?");
+        if (r == true) {
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/deleteMember",
+                data: {"id": id},
+                success: function () {
+                    alert("Üye Silindi!");
+                    loadPage('admin/members')
+                },
+                error: function () {
+                    alert("Silme Başarısız");
+                }
+            });
+        }
+    }
+</script>
+
+</body>
 </html>

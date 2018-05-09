@@ -1,6 +1,7 @@
 package com.commerce.entities;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,15 +25,17 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private Date date;
 
-    private boolean isDeliver = false;
+    private boolean isDeliver;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "memberId")
     private Member member;
 
     @ElementCollection
-    @JoinTable(name = "product_orderCount", joinColumns = @JoinColumn(name = "productCountId"))
+    @JoinTable( name = "Product_Count", joinColumns = @JoinColumn(name = "productCountId"))
     private List<Product_Count> product_counts = new ArrayList<>();
+
+    private boolean isRemoved;
 
     public Order(){
     }
@@ -90,5 +93,13 @@ public class Order implements Serializable {
 
     public void setProduct_counts(List<Product_Count> product_counts) {
         this.product_counts = product_counts;
+    }
+
+    public boolean isRemoved() {
+        return isRemoved;
+    }
+
+    public void setRemoved(boolean removed) {
+        isRemoved = removed;
     }
 }

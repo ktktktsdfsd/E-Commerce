@@ -19,7 +19,7 @@
 <div class="card mb-3">
     <div class="card-header d-flex justify-content-between align-items-center">
         <span><i class="fa fa-table"></i> Ürünler</span>
-        <input type="button" class="btn btn-success" value="Ekle">
+        <a href="admin/product/create" class="btn btn-success">Ekle</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -35,20 +35,21 @@
 
                 <tbody>
                 <c:forEach var="item" items="${products}">
-                    <tr>
-                        <td>${item.name}</td>
-                        <td>${item.title}</td>
-                        <td>${item.price}&nbsp;₺</td>
-                        <td class="d-flex justify-content-between align-items-center">${item.category.name}
-                            <span>
-                                <a href="#" class="btn btn-danger">Sil</a>
+                    <c:if test="${item.removed==false}">
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.title}</td>
+                            <td>${item.price}&nbsp;₺</td>
+                            <td class="d-flex justify-content-between align-items-center">${item.category.name}
+                                <span>
+                                <button class="btn btn-danger" onclick="ajaxpost(${item.id})">Sil</button>
                                 <a href="admin/product/details?id=${item.id}" class="btn btn-primary">Ayrıntılar</a>
-                            </span>
-                        </td>
-                    </tr>
+                                </span>
+                            </td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
                 </tbody>
-
             </table>
         </div>
     </div>
@@ -61,6 +62,27 @@
 <script src="<c:url value="/resources/admin/vendor/datatables/dataTables.bootstrap4.js"/>"></script>
 <script src="<c:url value="/resources/admin/js/sb-admin.min.js"/>"></script>
 <script src="<c:url value="/resources/admin/js/sb-admin-datatables.min.js"/>"></script>
+
+<script>
+    function ajaxpost(id) {
+
+        var r = confirm("Silmek istediğinize emin misiniz?");
+        if (r == true) {
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/deleteProduct",
+                data: {"id": id},
+                success: function () {
+                    alert("Kategori Silindi!");
+                    loadPage('admin/products')
+                },
+                error: function () {
+                    alert("Silme Başarısız");
+                }
+            });
+        }
+    }
+</script>
 
 </body>
 </html>

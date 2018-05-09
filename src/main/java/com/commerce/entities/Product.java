@@ -32,6 +32,8 @@ public class Product implements Serializable {
     @Column(name = "path")
     private String photoPath;
 
+    private boolean isRemoved;
+
     public Product() {
     }
 
@@ -99,5 +101,13 @@ public class Product implements Serializable {
 
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
+    }
+
+    public boolean isRemoved() {
+        return isRemoved;
+    }
+
+    public void setRemoved(boolean removed) {
+        isRemoved = removed;
     }
 }

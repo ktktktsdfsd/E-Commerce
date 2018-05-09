@@ -37,22 +37,24 @@
 
                 <tbody>
                 <c:forEach var="item" items="${orders}">
-                    <tr>
-                        <td>${item.member.name}</td>
-                        <td>${item.date}</td>
-                        <td>${item.sumPrice}&nbsp;₺</td>
-                        <td class="d-flex justify-content-between align-items-center">
-                            <c:choose>
-                                <c:when test="${item.deliver}">
-                                <input type="checkbox" disabled checked></c:when>
-                                <c:otherwise><input type="checkbox" disabled></c:otherwise>
-                            </c:choose>
-                            <span>
-                                <a href="#" class="btn btn-danger">Sil</a>
+                    <c:if test="${item.removed==false}">
+                        <tr>
+                            <td>${item.member.name}</td>
+                            <td>${item.date}</td>
+                            <td>${item.sumPrice}&nbsp;₺</td>
+                            <td class="d-flex justify-content-between align-items-center">
+                                <c:choose>
+                                    <c:when test="${item.deliver}">
+                                        <input type="checkbox" disabled checked></c:when>
+                                    <c:otherwise><input type="checkbox" disabled></c:otherwise>
+                                </c:choose>
+                                <span>
+                                <button class="btn btn-danger" onclick="ajaxpost(${item.id})">Sil</button>
                                 <a href="admin/order/details?id=${item.id}" class="btn btn-primary">Ayrıntılar</a>
                             </span>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
                 </tbody>
 
@@ -68,6 +70,27 @@
 <script src="<c:url value="/resources/admin/vendor/datatables/dataTables.bootstrap4.js"/>"></script>
 <script src="<c:url value="/resources/admin/js/sb-admin.min.js"/>"></script>
 <script src="<c:url value="/resources/admin/js/sb-admin-datatables.min.js"/>"></script>
+
+<script>
+    function ajaxpost(id) {
+
+        var r = confirm("Silmek istediğinize emin misiniz?");
+        if (r == true) {
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/deleteOrder",
+                data: {"id": id},
+                success: function () {
+                    alert("Kategori Silindi!");
+                    loadPage('admin/orders')
+                },
+                error: function () {
+                    alert("Silme Başarısız");
+                }
+            });
+        }
+    }
+</script>
 
 </body>
 </html>

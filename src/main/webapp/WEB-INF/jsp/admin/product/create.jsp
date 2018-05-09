@@ -5,21 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Elektro Admin Panel-Ürün Detay Sayfası</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kategori Ekle</title>
 
-    <link
-            href="<c:url value="/resources/admin/vendor/bootstrap/css/bootstrap.min.css"/>"
-            rel="stylesheet">
-    <link
-            href="<c:url value="/resources/admin/vendor/font-awesome/css/font-awesome.min.css"/>"
-            rel="stylesheet" type="text/css">
-    <link
-            href="<c:url value="/resources/admin/vendor/datatables/dataTables.bootstrap4.css"/>"
-            rel="stylesheet">
-    <link href="<c:url value="/resources/admin/css/sb-admin.css"/>"
-          rel="stylesheet">
+    <link href="<c:url value="/resources/admin/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/admin/vendor/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet"
+          type="text/css">
+    <link href="<c:url value="/resources/admin/vendor/datatables/dataTables.bootstrap4.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/admin/css/sb-admin.css"/>" rel="stylesheet">
 </head>
 <body>
 
@@ -43,17 +36,17 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Başlık </label>
                     <div class="col-lg-9">
-                        <input class="form-control" type="text" id="title" value="${product.title}">
+                        <input class="form-control" type="text" id="title">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Adı </label>
                     <div class="col-lg-9">
-                        <input class="form-control" type="text" id="name" value="${product.name}">
+                        <input class="form-control" type="text" id="name">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label form-control-label">Kategori </label>
+                    <label class="col-lg-3 col-form-label form-control-label">Kategori</label>
                     <div class="col-lg-9">
                         <select class="form-control" id="selectCategory">
                             <c:forEach var="item" items="${categories}">
@@ -65,16 +58,16 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Fiyatı </label>
                     <div class="col-lg-9">
-                        <input class="form-control" type="text" id="price" value="${product.price}">
+                        <input class="form-control" type="text" id="price">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Açıklama </label>
                     <div class="col-lg-9">
-                        <textarea class="form-control" id="description">${product.description}</textarea>
+                        <textarea class="form-control" id="description"></textarea>
                     </div>
                 </div>
-                <button onclick="ajaxpost()" class="btn btn-primary">Kaydet</button>
+                <button onclick="ajaxpost()" class="btn btn-primary">Ekle</button>
             </div>
         </div>
     </div>
@@ -89,28 +82,23 @@
 <script src="<c:url value="/resources/admin/js/sb-admin-datatables.min.js"/>"></script>
 
 <script>
-    $(function () {
-        $("#${product.category.id}").attr("selected", "selected");
-    });
-
     function ajaxpost() {
-
         $.ajax({
             type: "post",
-            url: "${pageContext.request.contextPath}/updateProduct",
+            url: "${pageContext.request.contextPath}/createProduct",
             data: {
-                "id": ${product.id},
                 "name": $('#name').val(),
                 "title": $('#title').val(),
-                "description": $('#description').val(),
                 "price": $('#price').val(),
+                "description": $('#description').val(),
                 "categoryId": $('#selectCategory').val()
             },
             success: function (res) {
-                alert("Ürün Güncellendi!");
+                alert("Ürün Eklendi!");
+                $('#name').attr("value", "");
             },
             error: function () {
-                alert("Güncelleme Başarısız");
+                alert("Ekleme Başarısız");
             }
         });
     }
