@@ -1,19 +1,14 @@
-package com.commerce.controller;
+package com.commerce.controller.admin;
 
-import com.commerce.entities.Member;
 import com.commerce.service.CategoryManager;
 import com.commerce.service.MemberManager;
 import com.commerce.service.OrderManager;
 import com.commerce.service.ProductManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class AdminController {

@@ -8,6 +8,8 @@ interface IDAO<T> {
 
     T get(Integer id);
 
+    T get(JinqStream.Where<T, Exception> where);
+
     void insert(T entity);
 
     void update(T entity);

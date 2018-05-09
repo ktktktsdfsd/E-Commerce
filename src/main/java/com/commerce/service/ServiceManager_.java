@@ -21,6 +21,11 @@ class ServiceManager_<T> implements IServiceManager_<T> {
     }
 
     @Override
+    public T get(JinqStream.Where<T, Exception> where) {
+        return dao.get(where);
+    }
+
+    @Override
     public void insert(T entity) {
         dao.insert(entity);
     }

@@ -35,42 +35,45 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <form role="form" name="member" action="admin/member/update" method="post">
+                            <%--<form name="member" action="admin/member/update?id=${member.id}" method="post">--%>
+                            <form>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Adı </label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="${member.name}">
+                                        <input class="form-control" type="text" id="name" value="${member.name}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Soyadı </label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="${member.surname}">
+                                        <input class="form-control" type="text" id="surname" value="${member.surname}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">E-Mail Adresi</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="email" value="${member.mail}">
+                                        <input class="form-control" type="email" id="mail" value="${member.mail}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Şifre </label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="password" value="${member.password}">
+                                        <input class="form-control" type="password" id="password"
+                                               value="${member.password}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Adresi</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="${member.adress}">
+                                        <input class="form-control" type="text" id="adress" value="${member.adress}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                        <input type="submit" class="btn btn-primary" value="Kaydet">
+                                        <input type="button" onclick="ajaxpost()" class="btn btn-primary"
+                                               value="Kaydet">
                                     </div>
                                 </div>
                             </form>
@@ -126,6 +129,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    function ajaxpost() {
+
+        $.ajax({
+            type: "post",
+            url: "${pageContext.request.contextPath}/updateMember",
+            data: {
+                "id": ${member.id},
+                "name": $('#name').val(),
+                "surname": $('#surname').val(),
+                "mail": $('#mail').val(),
+                "password": $('#password').val(),
+                "adress": $('#adress').val()
+            },
+            success: function (res) {
+                alert("Üye Güncellendi!");
+            },
+            error: function () {
+                alert("Güncelleme Başarısız");
+            }
+        });
+    }
+
+</script>
+
 
 <script src="<c:url value="/resources/admin/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>

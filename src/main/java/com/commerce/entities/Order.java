@@ -3,6 +3,7 @@ package com.commerce.entities;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "tbl_order")
 @DynamicUpdate
-public class Order {
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,12 +3,12 @@ package com.commerce.entities;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
- 
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tbl_product")
 @DynamicUpdate
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Product {
     @Column(nullable = false)
     private double price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
 

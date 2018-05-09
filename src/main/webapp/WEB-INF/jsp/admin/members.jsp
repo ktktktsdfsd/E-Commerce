@@ -20,9 +20,8 @@
 
 <!-- Example DataTables Card-->
 <div class="card mb-3">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <span><i class="fa fa-table"></i> Üyeler</span>
-        <input type="button" class="btn btn-success" value="Ekle">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Üyeler
     </div>
     <div class="card-body">
         <div class="table-responsive">

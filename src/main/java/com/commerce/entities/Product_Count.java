@@ -1,10 +1,11 @@
 package com.commerce.entities;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class Product_Count
-{
+public class Product_Count implements Serializable {
+
     private int productId;
 
     private int orderCount;

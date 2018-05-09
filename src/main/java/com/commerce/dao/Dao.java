@@ -27,6 +27,19 @@ public class Dao<T> implements IDAO<T> {
     }
 
     @Override
+    public T get(JinqStream.Where<T, Exception> where) {
+        EntityManager entityManager = Util.createEntityManager();
+        try {
+            return Util.JPA_STREAM_PROVIDER.streamAll(entityManager, tClass).where(where).getOnlyValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+        return null;
+    }
+
+    @Override
     public void insert(T entity) {
         EntityManager entityManager = Util.createEntityManager();
         try {
@@ -59,7 +72,7 @@ public class Dao<T> implements IDAO<T> {
         EntityManager entityManager = Util.createEntityManager();
         try {
             entityManager.getTransaction().begin();
-            entityManager.remove(entity);
+            entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,16 +83,8 @@ public class Dao<T> implements IDAO<T> {
 
     @Override
     public void delete(Integer id) {
-        EntityManager entityManager = Util.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.remove(get(id));
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            entityManager.close();
-        }
+        T entity = get(id);
+        delete(entity);
     }
 
     @Override

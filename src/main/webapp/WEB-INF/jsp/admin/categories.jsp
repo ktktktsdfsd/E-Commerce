@@ -19,7 +19,7 @@
 <div class="card mb-3">
     <div class="card-header d-flex justify-content-between align-items-center">
         <span><i class="fa fa-table"></i> Kategoriler</span>
-        <input type="button" class="btn btn-success" value="Ekle">
+        <a href="admin/category/create" class="btn btn-success">Ekle</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -34,8 +34,8 @@
                     <tr>
                         <td class="d-flex justify-content-between align-items-center">${item.name}
                             <span>
-                                <a href="#" class="btn btn-danger">Sil</a>
-                                <a href="admin/category/details?id=${item.id}" class="btn btn-primary">Düzenle</a>
+                                <button onclick="ajaxpost(${item.id})" class="btn btn-danger">Sil</button>
+                                <a href="admin/category/update?id=${item.id}" class="btn btn-primary">Düzenle</a>
                             </span>
                         </td>
                     </tr>
@@ -53,6 +53,31 @@
 <script src="<c:url value="/resources/admin/vendor/datatables/dataTables.bootstrap4.js"/>"></script>
 <script src="<c:url value="/resources/admin/js/sb-admin.min.js"/>"></script>
 <script src="<c:url value="/resources/admin/js/sb-admin-datatables.min.js"/>"></script>
+
+<script>
+    function ajaxpost(id) {
+
+        var r = confirm("Silmek istediğinize emin misiniz?");
+        if (r == true) {
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/deleteCategory",
+                data: {"id": id},
+                success: function (res) {
+                    if (res != "ERROR") {
+                        alert("Kategori Silindi!");
+                        loadPage('admin/categories')
+                    }
+                    else
+                        alert("Kategori Silinemedi!\nLütfen önce kategoriye ait ürünleri siliniz");
+                },
+                error: function () {
+                    alert("Silme Başarısız");
+                }
+            });
+        }
+    }
+</script>
 
 </body>
 </html>
