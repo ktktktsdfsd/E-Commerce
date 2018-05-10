@@ -30,7 +30,7 @@ public class Dao<T> implements IDAO<T> {
     public T get(JinqStream.Where<T, Exception> where) {
         EntityManager entityManager = Util.createEntityManager();
         try {
-            return Util.JPA_STREAM_PROVIDER.streamAll(entityManager, tClass).where(where).getOnlyValue();
+            return Util.JPA_STREAM_PROVIDER.streamAll(entityManager, tClass).where(where).findFirst().get();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

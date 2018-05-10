@@ -15,7 +15,7 @@
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="admin/index">Start Bootstrap</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                    <i class="fa fa-fw fa-sign-out"></i>Oturumu Kapat</a>
             </li>
         </ul>
     </div>
@@ -82,7 +82,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/">Logout</a>
+                    <a class="btn btn-primary" href="/adminLogout">Logout</a>
                 </div>
             </div>
         </div>

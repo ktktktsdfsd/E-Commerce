@@ -31,10 +31,16 @@
                 </ul>
                 <ul class="header-links pull-right">
 
-                    <!-- FIXME Dinamik olarak güncellenecek -->
-
-                    <li><a href="/login"><i class="fa fa-user-o"></i> Giriş Yap</a></li>
-                    <li><a href="#"><i class="fa fa-user-plus"></i> Üye Ol</a></li>
+                    <c:choose>
+                        <c:when test="${user==null}">
+                            <li><a href="/login"><i class="fa fa-user-o"></i> Giriş Yap</a></li>
+                            <li><a href="/signUp"><i class="fa fa-user-plus"></i> Üye Ol</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="/profile"><i class="fa fa-user-plus"></i>Profil</a></li>
+                            <li><a href="/logout"><i class="fa fa-user-plus"></i>Çıkış Yap</a></li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>

@@ -1,8 +1,10 @@
 package com.commerce.controller.admin;
 
 import com.commerce.entities.Category;
+import com.commerce.security.AdminFilter;
 import com.commerce.service.CategoryManager;
 import com.commerce.service.ProductManager;
+import common.ErrorPage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 public class CategoryController {
 
     CategoryManager categoryManager = new CategoryManager();
-    ProductManager productManager = new ProductManager();
 
     @RequestMapping("admin/category/create")
-    public String create() {
-        return "admin/category/create";
+    public String create(HttpServletRequest request) {
+        if (AdminFilter.adminFilter(request))
+            return "admin/category/create";
+        return ErrorPage.redirect404;
     }
 
     @RequestMapping(value = "createCategory", method = RequestMethod.POST)
@@ -27,8 +30,11 @@ public class CategoryController {
 
     @RequestMapping(value = "admin/category/update", params = {"id"})
     public String update(@RequestParam(value = "id") int id, HttpServletRequest request) {
-        request.setAttribute("category", categoryManager.get(id));
-        return "admin/category/update";
+        if (AdminFilter.adminFilter(request)){
+            request.setAttribute("category", categoryManager.get(id));
+            return "admin/category/update";
+        }
+        return ErrorPage.redirect404;
     }
 
     @RequestMapping(value = "updateCategory", method = RequestMethod.POST)

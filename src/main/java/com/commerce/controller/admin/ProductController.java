@@ -3,7 +3,9 @@ package com.commerce.controller.admin;
 import javax.servlet.http.HttpServletRequest;
 
 import com.commerce.entities.Product;
+import com.commerce.security.AdminFilter;
 import com.commerce.service.CategoryManager;
+import common.ErrorPage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,16 +22,22 @@ public class ProductController {
     CategoryManager categoryManager = new CategoryManager();
 
     @RequestMapping("admin/product/create")
-    public String create(Model model) {
-        model.addAttribute("categories", categoryManager.getList());
-        return "admin/product/create";
+    public String create(HttpServletRequest request, Model model) {
+        if (AdminFilter.adminFilter(request)) {
+            model.addAttribute("categories", categoryManager.getList());
+            return "admin/product/create";
+        }
+        return ErrorPage.redirect404;
     }
 
     @RequestMapping(value = "admin/product/details", params = {"id"})
     public String productdetails(@RequestParam(value = "id") int id, HttpServletRequest request) {
-        request.setAttribute("product", productManager.get(id));
-        request.setAttribute("categories", categoryManager.getList());
-        return "admin/product/details";
+        if (AdminFilter.adminFilter(request)) {
+            request.setAttribute("product", productManager.get(id));
+            request.setAttribute("categories", categoryManager.getList());
+            return "admin/product/details";
+        }
+        return ErrorPage.redirect404;
     }
 
 

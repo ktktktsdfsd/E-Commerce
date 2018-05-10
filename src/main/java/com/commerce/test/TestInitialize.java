@@ -45,6 +45,17 @@ public class TestInitialize {
             memberManager.insert(member);
         }
 
+        memberManager.insert(new Member(
+                "user", "user", "user@gmail.com", "user",
+                "adres", false, true
+        ));
+
+        // TODO Admin ekleme
+        memberManager.insert(new Member(
+                "admin", "admin", "admin@gmail.com", "admin",
+                "adres", true, true
+        ));
+
         // TODO Ürün Ekleme
         List<Category> categoryList = categoryManager.getList();
         for (int i = 0; i < 20; i++) {

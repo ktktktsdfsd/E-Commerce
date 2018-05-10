@@ -16,10 +16,10 @@ public class Member implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String name;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String surname;
 
     @Column(length = 50, nullable = false, unique = true)
@@ -42,9 +42,7 @@ public class Member implements Serializable {
     public Member() {
     }
 
-    public Member(String name, String surname, String mail, String password) {
-        this.name = name;
-        this.surname = surname;
+    public Member(String mail, String password) {
         this.mail = mail;
         this.password = password;
     }
