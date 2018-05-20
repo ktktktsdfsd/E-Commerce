@@ -28,5 +28,14 @@
 <script src="<c:url value="/resources/admin/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
+<script>
+
+    $(function () {
+        if (${sign}==true)
+            alert("Bu kullanıcı adı kullanılıyor!");
+    });
+
+</script>
+
 </body>
 </html>

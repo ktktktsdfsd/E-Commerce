@@ -5,6 +5,7 @@ import com.commerce.security.UserFilter;
 import com.commerce.service.MemberManager;
 import common.ErrorPage;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,7 +17,7 @@ public class HomeController {
     MemberManager memberManager = new MemberManager();
 
     @RequestMapping("/")
-    public String index(HttpServletRequest request) {
+    public String index() {
         return "home/index";
     }
 
@@ -34,6 +35,8 @@ public class HomeController {
         String password = request.getParameter("password");
 
         Member member = memberManager.get(x -> x.getMail().equals(mail) && x.getPassword().equals(password));
+        if (mail.isEmpty())
+            member = null;
 
         if (member != null) {
             request.getSession().setAttribute("user", member);
@@ -41,13 +44,12 @@ public class HomeController {
                 return "redirect:admin";
             else
                 return "redirect:/";
-
         }
         return "redirect:login";
     }
 
     @RequestMapping("/signUp")
-    public String signUp(HttpServletRequest request) {
+    public String signUp(HttpServletRequest request, Model model) {
         if (!UserFilter.userFilter(request))
             return "home/signUp";
         return ErrorPage.redirect404;
@@ -60,7 +62,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/signUpControl", method = RequestMethod.POST)
-    public String signUpControl(HttpServletRequest request) {
+    public String signUpControl(HttpServletRequest request, Model model) {
 
         String mail = request.getParameter("email");
         String password = request.getParameter("password");
@@ -71,7 +73,7 @@ public class HomeController {
             request.getSession().setAttribute("user", member);
             return "redirect:/";
         }
-        return "redirect:login";
+        return "redirect:signUp";
     }
 
     @RequestMapping("/profile")

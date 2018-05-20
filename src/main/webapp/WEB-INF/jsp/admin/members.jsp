@@ -50,9 +50,9 @@
                                     <c:otherwise><input type="checkbox" disabled></c:otherwise>
                                 </c:choose>
                                 <span>
-                                <a href="#" class="btn btn-danger">Sil</a>
-                                <a href="admin/member/details?id=${item.id}" class="btn btn-primary">Ayrıntılar</a>
-                            </span>
+                                    <button class="btn btn-danger" onclick="ajaxpost(${item.id})">Sil</button>
+                                    <a href="admin/member/details?id=${item.id}" class="btn btn-primary">Ayrıntılar</a>
+                                </span>
                             </td>
                         </tr>
                     </c:if>
